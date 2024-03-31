@@ -1,0 +1,278 @@
+body {
+  background-color: #222;
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+#controls {
+  display: flex;
+  justify-content: space-between; /* Añadido para distribuir los elementos uniformemente */
+  align-items: center; /* Añadido para alinear verticalmente los elementos */
+  margin-bottom: 20px;
+}
+
+#channels.horizontal {
+  white-space: nowrap;
+  overflow-x: auto;
+}
+
+#channels {
+  display: flex;
+  flex-direction: column;
+}
+
+.channel {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.name {
+  margin-right: 10px;
+}
+
+.steps {
+  flex-grow: 1;
+  display: flex;
+}
+
+.step {
+  flex-grow: 1;
+  height: 30px;
+  background-color: #444;
+  border: 1px solid #666;
+  cursor: pointer;
+  margin-right: 2px;
+}
+
+.step.active {
+  background-color: #00f;
+}
+
+#add-steps,
+button,
+#file-input {
+  flex: 1; /* Añadido para que ocupen el mismo espacio */
+  margin-right: 5px; /* Añadido para separar los botones */
+}
+
+#file-input {
+  display: block; /* Oculta el input file */
+}
+
+button,
+#add-steps,
+#remove-steps,
+#start,
+#stop,
+#file-input {
+  flex: 1;
+  margin-right: px;
+  padding: 10px 20px;
+  background-color: #555;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover,
+#add-steps:hover,
+#remove-steps:hover,
+#start:hover,
+#stop:hover,
+#file-input:hover {
+  background-color: #777;
+}
+
+button:disabled,
+#start:disabled,
+#stop:disabled,
+#file-input:disabled {
+  background-color: #888;
+  cursor: not-allowed;
+}
+
+/* CSS existente */
+
+#bpm-control {
+  display: flex;
+  width: 100%;
+}
+
+#bpm-slider {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* Fin CSS existente */
+
+/* CSS existente */
+
+.progress-line {
+  position: absolute;
+  height: 5px;
+  background-color: #35ece6;
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+#drum-pad-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px; /* Espacio superior opcional */
+}
+
+#volume-control {
+  display: flex;
+  width: 100%;
+}
+
+#volume-slider {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.modal {
+  display: none; /* Por defecto oculto */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+  border-radius: 8px;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  color: black;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  border-radius: 8px;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#deleteModal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+#deleteModal .modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+#deleteModal .close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+#deleteModal .close:hover,
+#deleteModal .close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.channel {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  background-color: #333; /* Color de fondo */
+  border-radius: 8px; /* Radio de borde */
+  padding: 10px; /* Márgenes internos */
+}
+
+.channel:hover {
+  background-color: #666;
+}
+
+.step:nth-child(4n+1) {
+  border-color: red;
+}
+
+
+/* Fin CSS existente */
+
+/* CSS para dispositivos móviles */
+@media only screen and (max-width: 600px) {
+  /* Estilos específicos para dispositivos móviles */
+  body {
+    font-size: 14px; /* Tamaño de fuente más pequeño */
+  }
+  
+  #controls {
+    flex-direction: column; /* Cambiar la dirección de los controles a columna */
+  }
+
+  #channels.horizontal {
+    white-space: initial; /* Restablecer el comportamiento de espaciado de texto */
+    overflow-x: initial; /* Restablecer el desbordamiento horizontal */
+  }
+
+  .channel {
+    margin-bottom: 10px; /* Reducir el margen entre canales */
+    width: 100%; /* Ocupar toda la anchura disponible */
+  }
+  
+  /* Estilos para encabezados */
+  h1 {
+    font-size: 24px; /* Tamaño de fuente más grande */
+  }
+  
+  /* Estilos para botones */
+  button {
+    padding: 8px 16px; /* Reducir el tamaño del botón */
+    width: 100%; /* Ocupar toda la anchura disponible */
+    margin-top: 10px;
+  }
+}
+
+/* CSS para tabletas */
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+  /* Estilos específicos para tabletas */
+  body {
+    font-size: 16px; /* Tamaño de fuente un poco más grande */
+  }
+}
+
+/* CSS para PC */
+@media only screen and (min-width: 1025px) {
+  /* Estilos específicos para PC */
+  body {
+    font-size: 18px; /* Tamaño de fuente más grande */
+  }
+}

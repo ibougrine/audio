@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Channel Rack</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1 style="text-align: center; position: relative;" id="channel-rack-header">
+    Channel Rack
+    <a href="instruccions.html" style="position: absolute; right: 0;">
+      <button id="info-button">ℹ️</button>
+    </a>
+  </h1>  
+
+  <div id="controls">
+    <button id="start">Iniciar</button>
+    <button id="stop">Parar</button>
+    <button id="add-steps">Afegir +4</button>
+    <button id="remove-steps">Eliminar -4</button>
+    <button id="addSoundBtn">Afegir so</button>
+    <button id="deleteSoundBtn">Eliminar so</button>
+  </div>
+
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Afegir so</h2>
+      <input type="text" id="sound-name" placeholder="Nom del so">
+      <input type="file" id="sound-file" accept=".wav">
+      <br><br>
+      <button id="add-sound">Añadir</button>
+    </div>
+  </div> 
+  
+  <div id="deleteModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Eliminar so</h2>
+      <p>Selecciona el so</p>
+      <select id="delete-sound-select">
+        <!-- Opciones de sonidos a eliminar se añadirán dinámicamente aquí -->
+      </select>
+      <br><br>
+      <button id="delete-sound">Eliminar</button>
+    </div>
+  </div>  
+
+  <div id="volume-control">
+    <label for="volume-slider">Volum:</label>
+    <input type="range" id="volume-slider" min="0" max="1" step="0.1" value="1">
+  </div>
+  <div id="bpm-control">
+    <label for="bpm-slider">BPM:</label>
+    <input type="range" id="bpm-slider" min="60" max="240" step="5" value="240">
+  </div>
+  
+  <div id="channels" class="draggable">
+    <!-- Canales precargados -->
+    <div class="channel" data-sound="sounds/hihat.wav" draggable="true">
+      <div class="name">Hihat</div>
+      <div class="steps"></div>
+      <div class="key"></div> <!-- Letra asignada al canal -->
+    </div>
+    <div class="channel" data-sound="sounds/kick.wav" draggable="true">
+      <div class="name">Kick</div>
+      <div class="steps"></div>
+      <div class="key"></div> <!-- Letra asignada al canal -->
+    </div>
+    <div class="channel" data-sound="sounds/snare.wav" draggable="true">
+      <div class="name">Snare</div>
+      <div class="steps"></div>
+      <div class="key"></div> <!-- Letra asignada al canal -->
+    </div>
+  </div>
+
+  <input type="file" id="file-input" accept=".wav" style="display: none;">
+  <div id="progress-line" class="progress-line"></div> 
+
+  <h1 style="text-align: center;">Drum Pad</h1>
+  <div id="drum-pad-container"></div>
+
+  <script src="js/script.js"></script>
+  <script src="js/drag.js"></script>
+  <script src="js/modal.js"></script>
+  <script src="js/drumpad.js"></script>
+  <script src="js/volume.js"></script>
+</body>
+</html>
